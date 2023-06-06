@@ -197,6 +197,22 @@ class probe:
             self.log.debug(f"{miso_data=}")
 
             return miso_data
+        
+    # -----------------------------------------------------------------------------
+
+        def SlaveEnable(self):
+
+            status = aa_spi_slave_enable(self.probe.aa_handler)
+            if status < 0:
+               self.log.debug(f"fail enabling spi slave, ({aa_status_string(status)})")
+
+    # -----------------------------------------------------------------------------
+
+        def SetSlaveResponse(self, data_out):
+            '''Max size supported = 64 bytes'''
+            status = aa_spi_slave_set_response(self.probe.aa_handler, data_out)
+            if status != len(data_out):
+               self.log.debug(f"fail setting salve response, size {status} != {len(data_out)} (len(data_out))")    
 
 # -----------------------------------------------------------------------------
 # -----------------------------------------------------------------------------

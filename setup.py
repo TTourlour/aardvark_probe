@@ -4,7 +4,7 @@ from setuptools.command.install import install
 # Setting up
 setup(
         name="aardvark_probe", 
-        version='0.0.2',
+        version='0.0.3',
         author="Quentin Pantostier",
         description='Wrapper for Panduza MQTT Calls',
         readme = "README.md",
